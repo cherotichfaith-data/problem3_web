@@ -1,6 +1,7 @@
 # File: app.py
 import streamlit as st
 import torch
+import torch.nn as nn  # ✅ Required for nn.Module, nn.Embedding, etc.
 import torchvision.transforms as transforms
 import matplotlib.pyplot as plt
 
@@ -35,6 +36,7 @@ def generate_images(digit, model):
         images = model(z, labels).view(-1, 28, 28)
     return images
 
+# Streamlit UI
 st.title("Handwritten Digit Generator")
 digit = st.selectbox("Choose a digit (0–9)", list(range(10)))
 
